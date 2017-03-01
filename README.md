@@ -1,2 +1,2 @@
-# WDC_Project
+# WDC Project
 Web and Database Computing Repository
