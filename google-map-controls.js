@@ -28,7 +28,7 @@ function init() {
 
 function loadScript() {
   var script = document.createElement('script');
-  script.src = 'http://maps.googleapis.com/maps/api/js?sensor=false&callback=init';
+  script.src = '//maps.googleapis.com/maps/api/js?sensor=false&callback=init';
   document.body.appendChild(script);
 }
 
