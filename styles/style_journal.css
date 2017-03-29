@@ -48,8 +48,8 @@ header > #title {
     background-color: #151515;
     z-index: 1;
     padding-top: 18vh;
-    padding-right: 6vw;
-    padding-left: 0.5vw;
+    padding-right: 5vw;
+    padding-left: 0;
     margin-left: 0;
     position: fixed;
     top: 0;
@@ -63,20 +63,27 @@ header > #title {
 
 #side_menu ul {
     list-style-type: none;
-    line-height: 45px;
+    line-height: 55px;
     font-size: 1.5em;
     left: 0;
 }
+#side_menu li:not(:last-child) {
+    border-bottom: 1px solid white;
+    border-color: rgba(255,255,255,0.2);
+    width: 250px;
+}
 
-#side_menu a {
+#side_menu li a{
     font-family: 'Josefin Sans', sans-serif;
     text-decoration: none;
     color: white;
-    transition: opacity 0.2s ease-in-out;
+    opacity: 0.6;
+    transition: opacity 0.15s ease-in-out;
 }
 
-#side_menu a:hover {
-    opacity: 0.6;
+#side_menu li a:hover {
+    opacity: 1;
+    cursor: pointer;
 }
 
 #close_menu {
