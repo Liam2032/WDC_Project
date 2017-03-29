@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Website</title>
+    <meta charset="utf-8" />
+    <!-- Set page width to viewport width  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="styles/style_journal.css">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:700|Roboto:100,300,400" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <span id="title">WDC Project </span>
+        <nav>
+            <button id="menu_toggle"></button>
+            <button class="button logout">Logout</button>
+            <input type="text" id="Search" />
+            <button class="btn">Search</button>
+
+        </nav>
+    </header>
+    <div id="side_menu" class="menu">
+    <span id="close_menu">Close</span>
+    <ul>
+        <li><a href="#">View recent entries</a></li>
+        <li><a href="#">Create new entry</a></li>
+        <li><a href="#">Faq</a></li>
+        <li><a href="#">Change calendar view</a></li>
+    </ul>
+    </div>
+    <section id="calendar">
+        <div class="heading">
+            <h1>Your Calendar</h1>
+        </div>
+        <div class="google_calendar">
+            <h1>Calendar Goes Here!</h1>
+        </div>
+        <button class="button jentry">Create Entry &gt;&gt;</button>
+    </section>
+    <footer>
+        <ul id="legal">
+            <li>COPYRIGHT © 2017</li>
+            <li>DESIGN BY LIAM, ADRIAN &amp; WADE</li>
+        </ul>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="actions/actions_journal.js"></script>
+</body>
+
+</html>

@@ -69,7 +69,7 @@ nav > ul li a:hover {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    background-image: url("Banner_BG.jpg");
+    background-image: url("../images/Banner_BG.jpg");
     background-position: center;
     background-size: cover;
     /* Scale BG to size of screen */
@@ -212,4 +212,3 @@ button.main_btn:hover {
 .scroll:after {
     transform: skew(0deg, -35deg);
 }
-
