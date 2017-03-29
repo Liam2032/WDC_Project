@@ -1,7 +1,7 @@
 $(function() {
 
     /* Search bar */
-    
+
     var $searchBar = $('#Search');
     var $btn = $('.btn');
 
@@ -10,33 +10,32 @@ $(function() {
         $btn.text('');
         $btn.animate({
             opacity: 0.2,
-            left: '+=130'
+            left: '+=170'
         }, 300, function() {});
-        // $btn.fadeToggle();
-        // $btn.css("opacity", "0.3");
         $searchBar.animate({
-            width: '+=160',
+            width: '+=190',
             opacity: 1.0,
         }, 300, function() {
             $searchBar.focus();
         });
     });
+    $searchBar.on('keypress', function(e) {
+        $(this).css("border-color", "rgba(255,255,255,0.9)");
+    });
 
     $searchBar.on('focusout', function(e) {
         $btn.animate({
-            opacity: 1.0,
-            left: '-=130'
+            opacity: 0.7,
+            left: '-=170'
         }, 300, function() {
             $btn.text('Search');
         });
         $searchBar.animate({
-            width: '-=160',
+            width: '-=190',
             opacity: 0.0,
         }, 300, function() {
-            // $btn.fadeToggle();
+            $(this).css("border-color", "rgba(255,255,255,0.3)");
             $searchBar.val('');
-            // $('.btn').text('');
-
         });
     });
 
