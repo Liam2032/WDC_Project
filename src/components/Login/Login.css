@@ -1,0 +1,14 @@
+.login {
+	margin: 0 auto;
+	margin-top: 150px;
+	width: 350px;
+}
+
+.login-button-holder {
+	height: 32px;
+	margin-top: 20px;
+}
+
+.login input {
+    max-width: 280px;
+}

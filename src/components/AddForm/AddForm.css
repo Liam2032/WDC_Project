@@ -1,0 +1,16 @@
+.addform {
+  margin: 30px auto;
+  color:black;
+}
+
+.button-container {
+	height: 32px;
+}
+
+.addform .ui.form textarea {
+	width: calc(100% - 35px);
+}
+
+.addform-calendar {
+	margin-left: 10px;
+}

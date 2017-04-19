@@ -1,0 +1,1 @@
+export const ADD_JOURNAL_ENTRY = 'ADD_JOURNAL_ENTRY';
