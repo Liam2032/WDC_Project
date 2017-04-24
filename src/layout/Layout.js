@@ -9,7 +9,6 @@ class Layout extends Component {
         <header>
             <span id="title">WDC Project </span>
             <nav>
-                <button className="button logout">Logout</button>
                 <input type="text" id="Search" disabled/>
                 <button className="btn">Search</button>
             </nav>

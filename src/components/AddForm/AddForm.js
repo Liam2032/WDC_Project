@@ -12,6 +12,8 @@ import './AddForm.css'
 import Calendar from 'rc-calendar'
 import 'rc-calendar/assets/index.css';
 
+import GoogleEventsList from './../GoogleEventsList/GoogleEventsList'
+
 class AddForm extends Component {
   initialState() {
     return {
@@ -67,13 +69,14 @@ class AddForm extends Component {
 
   render() {
     const { title, date, text } = this.state
-    const { go } = this.props
+    const { go, auth } = this.props
 
     return (
       <div className="addform">
         <Grid columns={15}>
           <Grid.Column width={4}>
             <Calendar onChange={this.handleDateChange} value={date} className="addform-calendar"/>
+            <GoogleEventsList date={date} auth={auth}/>
           </Grid.Column>
           <Grid.Column width={11}>
             <Segment clearing>

@@ -11,12 +11,12 @@ import './../semantic/components/button.css'
 
 class AddContainer extends Component {
   render() {
-    const { go, actions } = this.props
+    const { go, actions, auth } = this.props
 
     return (
       <div>
         <div>
-          <AddForm create={actions.addJournalEntry} go={go}/>
+          <AddForm create={actions.addJournalEntry} go={go} auth={auth}/>
         </div>
       </div>
     );
@@ -24,7 +24,9 @@ class AddContainer extends Component {
 }
 
 function mapStateToProps(state, props) {
-  return {}
+  return {
+    auth: state.auth
+  }
 }
 
 function mapDispatchToProps(dispatch) {

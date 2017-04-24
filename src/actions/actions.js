@@ -1,1 +1,3 @@
 export const ADD_JOURNAL_ENTRY = 'ADD_JOURNAL_ENTRY';
+export const AUTHORISE = 'AUTHORISE';
+export const DEAUTHORISE = 'DEAUTHORISE';

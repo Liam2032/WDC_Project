@@ -7,6 +7,9 @@ import Introduction from './../components/Introduction/Introduction'
 import CalendarCard from './../components/CalendarCard/CalendarCard'
 import JournalEntry from './../components/JournalEntry/JournalEntry'
 
+import { bindActionCreators } from 'redux'
+import * as authActions from '../actions/auth'
+
 import { Button } from 'semantic-ui-react'
 import './../semantic/components/button.css'
 
@@ -28,13 +31,7 @@ class GalleryContainer extends Component {
   }
 
   render() {
-    const { entries, go, loggedin } = this.props
-
-    let loginButton = (  
-      <div>
-        <Button onClick={() => {go('/login')}} floated='right' color='blue'>Login</Button>
-      </div>
-    )
+    const { entries, go, authed, actions } = this.props
 
     // Filter the entries:
     // TODO
@@ -58,9 +55,19 @@ class GalleryContainer extends Component {
     const calendar = <CalendarCard onChange={this.onCalendarChange}/>
     childElements.unshift(calendar)
     
+    let loginButton = (  
+      <div>
+        <Button onClick={() => {go('/login')}} floated='right' color='blue'>Login</Button>
+      </div>
+    )
+
     // Login Button Logic
-    if (loggedin) {
-      loginButton = null
+    if (authed) {
+      loginButton = (  
+        <div>
+          <Button onClick={() => {actions.deauthorise()}} floated='right' color='grey'>Logout</Button>
+        </div>
+      )
     }
 
     return (
@@ -79,12 +86,13 @@ class GalleryContainer extends Component {
 function mapStateToProps(state, props) {
   return {
     entries: state.journal,
-    loggedin: false
+    authed: state.auth
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
+    actions: bindActionCreators(authActions, dispatch),
     go: (where) => {dispatch(push(where))}
   }
 }
