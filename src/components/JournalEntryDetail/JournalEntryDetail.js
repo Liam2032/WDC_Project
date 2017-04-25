@@ -14,9 +14,10 @@ import './JournalEntryDetail.css'
 class Event extends Component {
   render() {
     const { id, summary, location, start, description } = this.props
-
-    const startMoment = moment(start).format('h:mm a') // We only want the time part
-
+    
+    // We only want the time part
+    const startMoment = moment(start).format('h:mm a') 
+    
     const header = `${summary} - ${startMoment}` 
 
     let locationComponent = null
