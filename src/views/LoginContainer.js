@@ -5,9 +5,6 @@ import Login from './../components/Login/Login'
 import { bindActionCreators } from 'redux'
 import * as authActions from '../actions/auth'
 
-import { Button } from 'semantic-ui-react'
-import './../semantic/components/button.css'
-
 class LoginContainer extends Component {
   render() {
 

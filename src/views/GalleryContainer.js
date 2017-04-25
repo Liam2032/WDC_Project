@@ -13,6 +13,7 @@ import * as authActions from '../actions/auth'
 import { Button } from 'semantic-ui-react'
 import './../semantic/components/button.css'
 
+import moment from 'moment'
 
 class GalleryContainer extends Component {
 
@@ -27,11 +28,12 @@ class GalleryContainer extends Component {
   }
 
   onCalendarChange(value) {
-    console.log(value)
+    this.setState({filter: value})
   }
 
   render() {
     const { entries, go, authed, actions } = this.props
+    const { filter } = this.state
 
     // Filter the entries:
     // TODO
@@ -40,6 +42,13 @@ class GalleryContainer extends Component {
     let childElements = entries.map(function(entry){
       const viewurl = '/view/' + entry.id
 
+      if (filter) {
+        console.log(Math.abs(entry.date.diff(filter, 'hours')))
+        if (Math.abs(entry.date.diff(filter, 'hours')) > 20) { // since timezone stuff makes this fuzzy
+          return
+        }
+      }
+
       return (
         <JournalEntry title={entry.title} date={entry.date} text={entry.text} id={entry.id} key={entry.id} viewurl={viewurl} go={go}/>
       );
@@ -47,12 +56,12 @@ class GalleryContainer extends Component {
 
     // If we haven't got any entries, stick the introduction on the top.
     if (entries.length === 0) {
-      const introduction = <Introduction/>
+      const introduction = <Introduction key="intro"/>
       childElements.push(introduction)
     }
 
     // Add the calendar to the front
-    const calendar = <CalendarCard onChange={this.onCalendarChange}/>
+    const calendar = <CalendarCard onChange={this.onCalendarChange} key="calendar"/>
     childElements.unshift(calendar)
     
     let loginButton = (  

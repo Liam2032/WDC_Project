@@ -19,7 +19,8 @@ class AddForm extends Component {
     return {
       title: '',
       date: null,
-      text: ''
+      text: '',
+      events: {}
     }
   }
 
@@ -42,24 +43,42 @@ class AddForm extends Component {
     this.setState({text: text})
   }
 
+  addEvent = (data) => {
+    const { events } = this.state
+    let newEvents = Object.assign({}, events)
+    newEvents[data.id] = data
+
+    //console.log('add', newEvents, data.id)
+
+    this.setState({events: newEvents})
+  }
+  
+  removeEvent = (id) => {
+    const { events } = this.state
+    let newEvents = Object.assign({}, events)
+    delete newEvents[id]
+
+    //console.log('remove', newEvents, id)
+
+    this.setState({events: newEvents})
+  }
+
   save = () => {
-    const { title, date, text} = this.state
+    //const { title, date, text} = this.state
 
     // ajax save it to the server here
   }
 
   createEntry = () => {
     const { create, go } = this.props
-    const { title, date, text } = this.state
+    const { title, date, text, events } = this.state
 
     // have to fill everything
     if (title.trim() === '') { return }
     if (date === null) { return }
     if (text.trim() === '') { return }
 
-    console.log('create an entry', title, date, text)
-
-    create(title, date, text)
+    create(title, date, text, events)
 
     this.save()
 
@@ -68,15 +87,17 @@ class AddForm extends Component {
   }
 
   render() {
-    const { title, date, text } = this.state
+    const { title, date, text, events } = this.state
     const { go, auth } = this.props
+
+    const selectedIDs = Object.keys(events)
 
     return (
       <div className="addform">
         <Grid columns={15}>
           <Grid.Column width={4}>
-            <Calendar onChange={this.handleDateChange} value={date} className="addform-calendar"/>
-            <GoogleEventsList date={date} auth={auth}/>
+            <Calendar onChange={this.handleDateChange} onSelect={this.handleDateChange} value={date} className="addform-calendar"/>
+            <GoogleEventsList date={date} auth={auth} addEvent={this.addEvent} removeEvent={this.removeEvent} selected={selectedIDs}/>
           </Grid.Column>
           <Grid.Column width={11}>
             <Segment clearing>

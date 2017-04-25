@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Checkbox, Form, Segment } from 'semantic-ui-react'
+import { Button, Form, Segment } from 'semantic-ui-react'
 
 import './../../semantic/components/form.css'
 import './../../semantic/components/button.css'

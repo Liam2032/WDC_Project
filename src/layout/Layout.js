@@ -8,10 +8,9 @@ class Layout extends Component {
       <div className="App">
         <header>
             <span id="title">WDC Project </span>
-            <nav>
-                <input type="text" id="Search" disabled/>
-                <button className="btn">Search</button>
-            </nav>
+            {/*<nav>
+                <input type="text" id="Search" enabled/>}
+            </nav>*/}
         </header>
         <section className="container">
             {this.props.children}

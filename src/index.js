@@ -19,7 +19,6 @@ import { Route } from 'react-router'
 import { ConnectedRouter, routerMiddleware } from 'react-router-redux'
 
 // Views
-import WelcomeContainer from './views/WelcomeContainer'
 import GalleryContainer from './views/GalleryContainer'
 import AddContainer from './views/AddContainer'
 import ViewContainer from './views/ViewContainer'

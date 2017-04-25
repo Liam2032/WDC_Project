@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
-import { bindActionCreators } from 'redux'
-import * as journalActions from '../actions/journal'
 import JournalEntryDetail from './../components/JournalEntryDetail/JournalEntryDetail'
 
 import { Button } from 'semantic-ui-react'
@@ -26,7 +24,7 @@ class ViewContainer extends Component {
 
     return (
       <div>
-        <JournalEntryDetail title={entry.title} date={entry.date} text={entry.text} id={entry.id} key={entry.id}/>
+        <JournalEntryDetail title={entry.title} date={entry.date} text={entry.text} id={entry.id} events={entry.events} key={entry.id}/>
 
         <div className="detail-go-back">
           <Button onClick={() => {go('/')}}>Go Back</Button>

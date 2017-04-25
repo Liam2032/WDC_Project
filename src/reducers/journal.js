@@ -7,7 +7,8 @@ export default (state = [], action) => {
         id: action.id,
         title: action.title, 
         date: action.date, 
-        text: action.text
+        text: action.text,
+        events: action.events
       })];
     default:
       return state;

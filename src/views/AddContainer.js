@@ -5,8 +5,6 @@ import { bindActionCreators } from 'redux'
 import * as journalActions from '../actions/journal'
 
 import AddForm from './../components/AddForm/AddForm'
-import { Button } from 'semantic-ui-react'
-import './../semantic/components/button.css'
 
 
 class AddContainer extends Component {

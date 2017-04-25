@@ -12,6 +12,7 @@ class CalendarCard extends Component {
       <div className="item-container">
         <Calendar 
           onChange={onChange}
+          onSelect={onChange}
           />
       </div>
     )
