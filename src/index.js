@@ -7,8 +7,9 @@ import './index.css';
 import Layout from './layout/Layout';
 
 // Redux
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
+import thunk from 'redux-thunk'; // thunk middleware
 
 // The state machine
 import rootReducer from './reducers';
@@ -28,13 +29,24 @@ import LoginContainer from './views/LoginContainer'
 const history = createHistory()
 
 // Build the middleware for intercepting and dispatching navigation actions
-const middleware = routerMiddleware(history)
+const rMiddleware = routerMiddleware(history)
+
+let enhancer
+
+if (process.env.NODE_ENV === 'development') {
+  enhancer = compose(
+    applyMiddleware(rMiddleware, thunk),
+    (typeof window.__REDUX_DEVTOOLS_EXTENSION__ !== 'undefined') ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f, // Redux dev tools
+  )
+} else {
+  enhancer = compose(applyMiddleware(rMiddleware, thunk))
+}
 
 // Add the reducer to your store on the `router` key
 // Also apply our middleware for navigating
 const store = createStore(
   rootReducer,
-  applyMiddleware(middleware)
+  enhancer
 )
 
 // Render the application in the layout according to the url route

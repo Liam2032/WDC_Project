@@ -103,7 +103,7 @@ class GoogleEventsList extends Component {
     const searchStart = momentCopy.toISOString()
     const searchEnd = momentCopy.add(1, 'days').toISOString()
 
-    let url = `https://www.googleapis.com/calendar/v3/calendars/${auth.profileObj.email}/events?fields=items(summary,id,location,start,description)&timeMin=${searchStart}&timeMax=${searchEnd}&timeMin=${searchStart}`
+    let url = `https://www.googleapis.com/calendar/v3/calendars/${auth.profileObj.email}/events?fields=items(summary,id,location,start,description)&timeMin=${searchStart}&timeMax=${searchEnd}`
 
     fetch(url, { 
       method: 'get', 

@@ -13,8 +13,6 @@ import * as authActions from '../actions/auth'
 import { Button } from 'semantic-ui-react'
 import './../semantic/components/button.css'
 
-import moment from 'moment'
-
 class GalleryContainer extends Component {
 
   constructor(props) {
@@ -45,7 +43,7 @@ class GalleryContainer extends Component {
       if (filter) {
         console.log(Math.abs(entry.date.diff(filter, 'hours')))
         if (Math.abs(entry.date.diff(filter, 'hours')) > 20) { // since timezone stuff makes this fuzzy
-          return
+          return null
         }
       }
 

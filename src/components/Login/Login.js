@@ -14,6 +14,7 @@ class Login extends Component {
     const { go, authorise } = this.props
 
     // Actually check that it succeeded
+    console.log(res)
     if (res.accessToken) {
       authorise(res)
       go('/')
