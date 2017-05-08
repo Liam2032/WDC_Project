@@ -35,6 +35,12 @@ app.options("*", function(req, res, next){
   res.send(200);
 });
 
+// For fun, before authentication
+app.get('/api/teapot', (req, res) => {
+  res.sendStatus(418);
+});
+
+// OPENID
 // We catch api routes here to authenticate
 app.all('/api/*', function(req, res, next){
   let token = false
@@ -79,7 +85,7 @@ app.all('/api/*', function(req, res, next){
 
       // Set the user property of the request to their Google ID
       req.user = payload['sub'];
-      next(); // callback back, send it on to the route
+      next(); // callback back, send it on to the router
     });
 });
 
@@ -105,32 +111,30 @@ function addJournalEntry(userID, journal) {
   }
 
   // grab a global id and throw it into the journal entry
-  const newJournal = Object.assign({}, journal, {globalID: getAutoID()})
-
-  // remove the temp id
-  delete newJournal['tempid']
+  const newJournal = Object.assign({}, journal, {id: getAutoID(), hasGlobalID: true})
 
   // add it to the array
   hashMap[userID].push(newJournal)
 
   // return the global id
-  return newJournal.globalID
+  return newJournal.id
 }
 
 
 function deleteJournalEntry(userid, journalID) {
   if (!hashMap[userid]) {
+    console.error('couldn\'t find hashmap for user')
     return false // couldn't delete it
   }
 
   // iterate through and delete it
   for(var i = 0; i < hashMap[userid].length; i++) {
-    if(hashMap[userid][i].globalID == journalID) {
+    if(hashMap[userid][i].id == journalID) {
       hashMap[userid].splice(i, 1);
       return true; // found and deleted
     }
   }
-
+  console.error('couldn\'t find it')
   return false // couldn't find it
 }
 
@@ -146,7 +150,7 @@ app.get('/api/journalentries', (req, res) => {
 app.post('/api/journalentries', (req, res) => {
   // The body should be an array of entries
   if (!Array.isArray(req.body)) {
-    console.log(req.body)
+    console.error("not an array", req.body)
     res.sendStatus(422)
     return
   }
@@ -154,13 +158,19 @@ app.post('/api/journalentries', (req, res) => {
   let tempToGlobal = {};
 
   for (let entry of req.body) {
-    if (!entry.tempid) {
-      res.sendStatus(422); // entries must have a temporary ID so we can change it, so we can delete the entry later
+
+    if (entry.id && entry.hasGlobalID) { 
+      continue // this isn't illegal so just continue
+    }
+
+    if (!entry.id) {
+      console.error("entries must have an ID so we can change it", entry.id, req.body)
+      res.sendStatus(422); // entries must have an ID so we can change it, so we can delete the entry later
       return
     }
     // add the entry and grab the new ID
     const globalID = addJournalEntry(req.user, entry);
-    tempToGlobal[entry.tempid] = globalID;
+    tempToGlobal[entry.id] = globalID;
   }
 
   // give them the map of old IDs to new

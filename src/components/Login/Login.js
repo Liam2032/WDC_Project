@@ -38,9 +38,8 @@ class Login extends Component {
               style={{}}
               scope="profile email https://www.googleapis.com/auth/calendar.readonly"
               responseType="authorization_code"
-            >
-              <Button color='green' className="LogButton" fluid>Login with Google</Button>
-            </GoogleLogin>
+              disabledStyle={{}}
+            />
 
           </Form>
 

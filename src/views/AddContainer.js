@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 import { bindActionCreators } from 'redux'
-import * as journalActions from '../actions/journal'
+import * as syncActions from '../actions/sync'
 
 import AddForm from './../components/AddForm/AddForm'
 
@@ -14,7 +14,7 @@ class AddContainer extends Component {
     return (
       <div>
         <div>
-          <AddForm create={actions.addJournalEntry} go={go} auth={auth}/>
+          <AddForm create={actions.addAndSaveJournalEntry} go={go} auth={auth}/>
         </div>
       </div>
     );
@@ -29,7 +29,7 @@ function mapStateToProps(state, props) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(journalActions, dispatch),
+    actions: bindActionCreators(syncActions, dispatch),
     go: (where) => {dispatch(push(where))}
   }
 }
