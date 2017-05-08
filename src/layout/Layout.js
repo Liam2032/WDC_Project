@@ -7,10 +7,7 @@ class Layout extends Component {
     return (
       <div className="App">
         <header>
-            <span id="title">WDC Project </span>
-            {/*<nav>
-                <input type="text" id="Search" enabled/>}
-            </nav>*/}
+            <span id="title">WDC PROJECT</span>
         </header>
         <section className="container">
             {this.props.children}

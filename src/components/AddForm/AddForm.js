@@ -63,12 +63,6 @@ class AddForm extends Component {
     this.setState({events: newEvents})
   }
 
-  save = () => {
-    //const { title, date, text} = this.state
-
-    // ajax save it to the server here
-  }
-
   createEntry = () => {
     const { create, go } = this.props
     const { title, date, text, events } = this.state
@@ -79,8 +73,6 @@ class AddForm extends Component {
     if (text.trim() === '') { return }
 
     create(title, date, text, events)
-
-    this.save()
 
     this.setState(this.initialState())
     go('/')

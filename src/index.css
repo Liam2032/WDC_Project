@@ -4,7 +4,7 @@
 
 body {
     position: relative;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Lato', Helvetica, sans-serif;
     font-size: 13pt;
     font-weight: lighter;
     margin: 0;
@@ -13,7 +13,6 @@ body {
     color: white;
     word-wrap: break-word;
 }
-
 
 /* Center Banner */
 
@@ -37,7 +36,6 @@ body {
 }
 
 #banner .heading {
-    font-family: 'Josefin Sans', sans-serif;
     color: white;
     opacity: 0.9;
     top: -5vh;
@@ -53,7 +51,7 @@ body {
 
 #banner h4 {
     font-size: 50%;
-    font-family: 'Roboto';
+    font-family: 'Lato';
     font-weight: 300;
     margin-top: -3vh;
     opacity: 0.8;
@@ -71,7 +69,7 @@ button.main_btn {
     cursor: pointer;
     font-size: 0.4em;
     color: inherit;
-    font-family: 'Roboto';
+    font-family: 'Lato';
     font-weight: 400;
     transition: border 0.5s ease-in-out, background 0.2s ease-in-out, color 0.3s ease-in-out;
 }

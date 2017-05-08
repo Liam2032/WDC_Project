@@ -14,6 +14,7 @@ class Login extends Component {
     const { go, authorise } = this.props
 
     // Actually check that it succeeded
+    console.log(res)
     if (res.accessToken) {
       authorise(res)
       go('/')
@@ -37,9 +38,8 @@ class Login extends Component {
               style={{}}
               scope="profile email https://www.googleapis.com/auth/calendar.readonly"
               responseType="authorization_code"
-            >
-              <Button color='green' className="LogButton" fluid>Login with Google</Button>
-            </GoogleLogin>
+              disabledStyle={{}}
+            />
 
           </Form>
 

@@ -1,5 +1,8 @@
 import React, { PropTypes, Component } from 'react';
 
+import { Button } from 'semantic-ui-react'
+import './../../semantic/components/button.css'
+
 // https://github.com/anthonyjgrove/react-google-login
 
 class GoogleLogin extends Component {
@@ -127,14 +130,9 @@ class GoogleLogin extends Component {
       }
       return styleProp;
     })();
-    const googleLoginButton = React.createElement(
-      tag, {
-        onClick: this.signIn,
-        style: defaultStyle,
-        disabled,
-        className,
-      }, children ? children : buttonText
-    );
+
+    // fix this so the disabled button works
+    const googleLoginButton = <Button color='green' className="LogButton" fluid onClick={this.signIn} disabled={disabled}>Login with Google</Button>
     return googleLoginButton;
   }
 }
