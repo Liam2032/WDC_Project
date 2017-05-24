@@ -12,9 +12,13 @@
   "license": "None",
   "dependencies": {
     "body-parser": "^1.17.1",
+    "dotenv": "^4.0.0",
     "express": "^4.15.2",
     "google-auth-library": "^0.10.0",
-    "morgan": "^1.8.1"
+    "morgan": "^1.8.1",
+    "mysql": "^2.13.0",
+    "mysql2": "^1.2.0",
+    "sequelize": "^3.30.4"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
