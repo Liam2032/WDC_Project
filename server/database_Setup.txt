@@ -1,0 +1,8 @@
+// Setup mariadB steps:
+
+1. install mariaDB (Use windows client, much easier)
+2. create mysql connection and start mysql (happens automatically after running heidisql)
+3. run mysql -u root -p -h 127.0.0.1 -P 3306 in main folder
+4. login with mariadb password for root
+5. type: source createEntriesDb.sql (should run sql script and create db and table)
+6. run npm start for app, mysql should be running and app should interact with server
