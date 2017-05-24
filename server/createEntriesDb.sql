@@ -1,0 +1,11 @@
+CREATE DATABASE journals;
+
+USE entries;
+
+CREATE TABLE entries (
+	id   INTEGER PRIMARY KEY AUTO_INCREMENT,
+	title	VARCHAR(255) NOT NULL,
+	date DATE,
+	text LONGTEXT NOT NULL,
+    events TEXT
+) CHARACTER SET utf8;
